@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-
-const rootReducer = combineReducers({});
+import days from "./days/days";
+import times from "./times/times";
+const rootReducer = combineReducers({ days, times });
 
 export default rootReducer;
 
