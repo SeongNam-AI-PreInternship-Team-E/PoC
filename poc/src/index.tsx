@@ -6,15 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./modules";
+import { BrowserRouter } from "react-router-dom";
+import { composeWithDevTools } from "redux-devtools-extension"; // 리덕스 개발자 도구
 
-const store = createStore(rootReducer);
-
+const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
