@@ -1,42 +1,78 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import TodoInsert from "../components/TodoInsert";
 // import TodoList from "../components/TodoList";
 import { RootState } from "../modules";
 import type { Times } from "../modules/times/times";
-import { addDays, addTimes } from "../modules/times/times";
-import { DaysList } from "../components/days/DaysList";
+import {
+  addDays,
+  addTimes,
+  addAllTimes,
+  toggleColor,
+} from "../modules/times/times";
+import {
+  addTeamAllTimes,
+  addTeamTimes,
+  toggleTeamColor,
+} from "../modules/times/teamtimes";
 import { TimesList } from "../components/times/TimesList";
-import { time } from "console";
 function TimesContainer() {
   const days = useSelector((state: RootState) => state.days);
   const times = useSelector((state: RootState) => state.times);
+  const team = useSelector((state: RootState) => state.teamtimes);
   const dispatch = useDispatch();
-
-  const onAddDays = (id: number) => {
-    dispatch(addDays(id));
-  };
+  const getSeperateTime = useCallback((start: number, end: number) => {
+    let arr = [];
+    let index = 0;
+    for (let i = start; i <= end; i += 0.5) {
+      arr.push({ time: i, color: "white", index, select: false });
+      index++;
+    }
+    return arr;
+  }, []);
+  const timeSet = getSeperateTime(days.start_hour, days.end_hour);
   const onAddTimes = (id: number, start: number, end: number) => {
     const set_time: Times = { start, end };
     const number = { id, set_time };
     dispatch(addTimes(number));
+    dispatch(addTeamTimes(number));
   };
-  const getSeperateTime = (start: number, end: number) => {
-    let arr = [];
-    for (let i = start; i <= end; i += 0.5) {
-      arr.push({ time: i, color: "black" });
+  const onAddAllTimes = useCallback(
+    (id: number, arr: any) => {
+      dispatch(addAllTimes({ id, arr }));
+    },
+    [dispatch]
+  );
+  const onAddTeamAllTimes = useCallback(
+    (id: number, arr: any) => {
+      dispatch(addTeamAllTimes({ id, arr }));
+    },
+    [dispatch]
+  );
+  useEffect(() => {
+    for (let i = 0; i <= size; i++) {
+      onAddAllTimes(i, timeSet);
+      onAddTeamAllTimes(i, timeSet);
     }
-    return arr;
+  }, [onAddAllTimes]);
+  const onChangeColor = (id: number, arrnum: number) => {
+    dispatch(toggleTeamColor({ id, arrnum }));
+    dispatch(toggleColor({ id, arrnum }));
   };
-  const timeSet = getSeperateTime(days.start_hour, days.end_hour);
+
   const avalibaleTime = days.end_hour - days.start_hour;
+  const size = times.length;
+
   return (
     <>
       <TimesList
         times={times}
         onAddTimes={onAddTimes}
+        onAddAllTimes={onAddAllTimes}
         avalibaleTime={avalibaleTime}
         timeSet={timeSet}
+        startTime={days.start_hour}
+        onChangeColor={onChangeColor}
       ></TimesList>
     </>
   );
