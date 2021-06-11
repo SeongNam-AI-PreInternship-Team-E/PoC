@@ -1,9 +1,10 @@
 import { createPublicKey } from "crypto";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+
 import styled from "styled-components";
 import { Days } from "../../modules/days/days";
 import { SetDays } from "../../modules/times/times";
-
+import { TimeIndex } from "./TimeIndex";
 const PageWrapper = styled.div`
   margin-top: 100px;
   width: 10%;
@@ -25,34 +26,39 @@ const TimeBlock = styled.li`
   flex-direction: column;
   border: 1px solid black;
 `;
+
 type TimeProps = {
   time: SetDays;
   onAddTimes: (id: number, start: number, end: number) => void;
+  onAddAllTimes: (id: number, arr: any) => void;
   timeSet: any;
+  startTime: number;
+  onChangeColor: (id: number, arrnum: number) => void;
+  indexofTime: number;
 };
 
-export const TimeItem = ({ time, onAddTimes, timeSet }: TimeProps) => {
-  const [colors, setColors] = useState({ ...timeSet });
-  const onChangeColor = (index: number) => {
-    setColors((colors[index].color = "red"));
-  };
-  const onClick = () => {};
+export const TimeItem = ({
+  time,
+  onAddTimes,
+  timeSet,
+  onAddAllTimes,
+  startTime,
+  onChangeColor,
+  indexofTime,
+}: TimeProps) => {
   return (
     <PageWrapper>
       <TimeBlock>
         {timeSet.map((sep: any) => (
-          <Item
-            key={sep.time}
-            onClick={() => {
-              onChangeColor(sep.time);
-            }}
-            style={{ color: `${sep.color}` }}
-          >
-            {sep.time}
-          </Item>
+          <TimeIndex
+            time={time}
+            key={sep.index}
+            onChangeColor={onChangeColor}
+            indexofTime={indexofTime}
+            sep={sep}
+          />
         ))}
       </TimeBlock>
-      <Item></Item>
     </PageWrapper>
   );
 };
