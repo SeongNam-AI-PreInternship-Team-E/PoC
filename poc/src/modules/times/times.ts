@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { time } from "console";
 
 export type Times = {
   start: number;
@@ -45,6 +44,23 @@ export const timeSlice = createSlice({
         time.all_times.push(action.payload.arr);
       }
     },
+    toggleColor: (
+      state,
+      action: PayloadAction<{ id: number; arrnum: number }>
+    ) => {
+      const colors = state.find((color) => color.id === action.payload.id);
+      if (colors) {
+        if ((colors.all_times[0][action.payload.arrnum].color = "white")) {
+          colors.all_times[0][action.payload.arrnum].color = "#5465FF";
+          colors.all_times[0][action.payload.arrnum].select =
+            !colors.all_times[0][action.payload.arrnum].select;
+        } else {
+          colors.all_times[0][action.payload.arrnum].color = "white";
+          colors.all_times[0][action.payload.arrnum].select =
+            !colors.all_times[0][action.payload.arrnum].select;
+        }
+      }
+    },
     // toggleTodo: (state, action: { id: number }) => {
     //   const todo = state.find((todo) => todo.id === action.payload);
     //   if (todo) {
@@ -54,6 +70,7 @@ export const timeSlice = createSlice({
   },
 });
 
-export const { addDays, addTimes, addAllTimes } = timeSlice.actions;
+export const { addDays, addTimes, addAllTimes, toggleColor } =
+  timeSlice.actions;
 
 export default timeSlice.reducer;
