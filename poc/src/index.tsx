@@ -12,9 +12,9 @@ import { composeWithDevTools } from "redux-devtools-extension"; // 리덕스 개
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById("root")
 );
