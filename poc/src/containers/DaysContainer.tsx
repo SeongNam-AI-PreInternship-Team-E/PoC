@@ -9,6 +9,7 @@ import {
   setEndHour,
   addTodo,
 } from "../modules/days/days";
+import { addTeamDays } from "../modules/times/teamtimes";
 import { addDays } from "../modules/times/times";
 import { DaysList } from "../components/days/DaysList";
 function DaysContainer() {
@@ -30,10 +31,11 @@ function DaysContainer() {
 
   const onAddDays = (id: number) => {
     dispatch(addDays(id));
+    dispatch(addTeamDays(id));
   };
+
   return (
     <>
-      {console.log(days.Availiable)}
       <DaysList
         onToggle={onToggle}
         onAddTodo={onAddTodo}
