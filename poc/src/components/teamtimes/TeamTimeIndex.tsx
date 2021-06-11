@@ -18,6 +18,7 @@ type TeamTimeIndexProps = {
   indexofTime: number;
   time: any;
   teamtimes: any;
+  randArr: any;
 };
 
 export const TeamTimeIndex = ({
@@ -26,21 +27,37 @@ export const TeamTimeIndex = ({
   indexofTime,
   time,
   teamtimes,
+  randArr,
 }: TeamTimeIndexProps) => {
   const [color, setColor] = useState("white");
+  const [opacity, setOpacity] = useState("100%");
   useEffect(() => {
     // let my_color = setColor(teamtimes[0].all_times[0][indexofTime].color);
-
+    randArr.forEach((element: number) => {
+      if (element === sep.index) {
+        onChangeColor(indexofTime, sep.index);
+      }
+    });
     setColor(sep.color);
   }, [sep.color]);
   const onClick = () => {
-    if (color === "white") setColor("#5465FF");
-    else setColor("white");
+    if (color === "white") {
+      setColor("#5465FF");
+      setOpacity("40%");
+    } else {
+      setColor("white");
+    }
     onChangeColor(indexofTime, sep.index);
   };
+
   return (
     <>
-      <Item style={{ backgroundColor: `${color}` }}>{sep.time}</Item>
+      <Item
+        onClick={onClick}
+        style={{ opacity: `${opacity}`, backgroundColor: `${color}` }}
+      >
+        {sep.time}
+      </Item>
     </>
   );
 };

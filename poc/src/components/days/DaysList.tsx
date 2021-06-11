@@ -1,14 +1,19 @@
 // @flow
 import * as React from "react";
-import { Days, setEndHour } from "../../modules/days/days";
+import { Days } from "../../modules/days/days";
 import styled from "styled-components";
 import DayItem from "./DayItem";
 import SelectTime from "./SelectTime";
 import Button from "../common/Button";
-const WeekandBlock = styled.div``;
+const WeekandBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 const DayItemBlock = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 type DaysProps = {
@@ -27,10 +32,8 @@ export const DaysList = ({
   onAddTodo,
   onAddDays,
 }: DaysProps) => {
-  let num = 1;
   return (
     <>
-      {console.log(days)}
       <WeekandBlock>
         <DayItemBlock>
           {days.map((day) => (
@@ -43,11 +46,13 @@ export const DaysList = ({
             ></DayItem>
           ))}
         </DayItemBlock>
+        <div>
+          <SelectTime onSetEnd={onSetEnd} onSetStart={onSetStart}></SelectTime>
+        </div>
+        <Button to="/time" cyan>
+          다음
+        </Button>
       </WeekandBlock>
-      <div>
-        <SelectTime onSetEnd={onSetEnd} onSetStart={onSetStart}></SelectTime>
-      </div>
-      <Button to="/time">다음</Button>
     </>
   );
 };

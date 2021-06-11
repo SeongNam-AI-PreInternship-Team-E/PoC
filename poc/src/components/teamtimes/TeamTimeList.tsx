@@ -21,6 +21,7 @@ type TimesProps = {
   onAddTeamAllTimes: (id: number, arr: any) => void;
   onChangeColor: (id: number, arrnum: number) => void;
   teamtimes: any;
+  randArr: any;
 };
 export const TeamTimeList = ({
   times,
@@ -30,15 +31,17 @@ export const TeamTimeList = ({
   onAddTeamAllTimes,
   onChangeColor,
   teamtimes,
+  randArr,
 }: TimesProps) => {
   return (
     <>
       <TimesBlock>
-        <h1>팀원 시간</h1>
+        <h1 style={{ margin: "2rem" }}>팀원 시간</h1>
 
         <DayBlock>
           {times.map((day: any) => (
             <TeamTimeItem
+              randArr={randArr}
               teametimes={teamtimes}
               indexofTime={day.id}
               onChangeColor={onChangeColor}

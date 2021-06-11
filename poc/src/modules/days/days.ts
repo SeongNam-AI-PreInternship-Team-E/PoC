@@ -39,7 +39,6 @@ export const daysSlice = createSlice({
     },
     setStartHour: (state, action: PayloadAction<number>) => {
       state.start_hour = action.payload;
-      console.log("good workd", state.start_hour);
     },
     setEndHour: (state, action: PayloadAction<number>) => {
       state.end_hour = action.payload;

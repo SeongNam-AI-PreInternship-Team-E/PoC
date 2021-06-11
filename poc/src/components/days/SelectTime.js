@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { setEndHour } from "../../modules/days/days";
 const SelectBlock = styled.div`
   flex-direction: column;
+  margin-top: 2rem;
 `;
 function SelectTime({ onSetEnd, onSetStart }) {
   const options = [
@@ -45,7 +46,6 @@ function SelectTime({ onSetEnd, onSetStart }) {
       <SelectBlock>
         <div>Start Hour : </div>
         <Select
-          width="200px"
           options={options}
           onChange={SetStartHour}
           defaultValue={6}
@@ -53,12 +53,7 @@ function SelectTime({ onSetEnd, onSetStart }) {
       </SelectBlock>
       <SelectBlock>
         <div>End Hour : </div>
-        <Select
-          width="200px"
-          options={options}
-          onChange={SetEndHour}
-          defaultValue={24}
-        />
+        <Select options={options} onChange={SetEndHour} defaultValue={24} />
       </SelectBlock>
     </div>
   );

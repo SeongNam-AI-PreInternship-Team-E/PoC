@@ -20,6 +20,7 @@ type TimesProps = {
   startTime: number;
   onAddAllTimes: (id: number, arr: any) => void;
   onChangeColor: (id: number, arrnum: number) => void;
+  randArr: any;
 };
 export const TimesList = ({
   times,
@@ -28,14 +29,16 @@ export const TimesList = ({
   startTime,
   onAddAllTimes,
   onChangeColor,
+  randArr,
 }: TimesProps) => {
   return (
     <>
       <TimesBlock>
-        <h1>나의 시간</h1>
+        <h1 style={{ margin: "2rem" }}>나의 시간</h1>
         <DayBlock>
           {times.map((day) => (
             <TimeItem
+              randArr={randArr}
               indexofTime={day.id}
               onChangeColor={onChangeColor}
               key={day.id}

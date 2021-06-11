@@ -10,21 +10,18 @@ type DayItemProps = {
 
 const PageWrapper = styled.div`
   margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const BoxElement = styled.div`
-  width: 100px;
-  height: 100px;
-  margin-left: 20px;
-  margin-right: 20px;
-
+  margin-top: 2rem;
+  padding: 2rem;
+  display: flexbox;
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 1rem;
+  justify-content: center;
   align-items: center;
-  align-content: center;
-  align-content: center;
-  vertical-align: middle;
-  background-color: white;
   text-align: center;
 `;
 

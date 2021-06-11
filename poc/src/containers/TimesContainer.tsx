@@ -66,6 +66,7 @@ function TimesContainer() {
   return (
     <>
       <TimesList
+        randArr={1}
         times={times}
         onAddTimes={onAddTimes}
         onAddAllTimes={onAddAllTimes}

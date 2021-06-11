@@ -61,12 +61,6 @@ export const timeSlice = createSlice({
         }
       }
     },
-    // toggleTodo: (state, action: { id: number }) => {
-    //   const todo = state.find((todo) => todo.id === action.payload);
-    //   if (todo) {
-    //     todo.check = !todo.check;
-    //   }
-    // },
   },
 });
 

@@ -8,7 +8,15 @@ const buttonStyle = css`
   border-radius: 4px;
   font-size: 1rem;
   font-weight: bold;
+  margin-top: 4rem;
   padding: 0.25rem 1rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
+  position: relative;
   /* align-items: center;
   align-content: center;
   justify-content: center;
@@ -32,6 +40,7 @@ const buttonStyle = css`
     props.cyan &&
     css`
       background: ${palette.cyan[5]};
+
       &:hover {
         background: ${palette.cyan[4]};
       }

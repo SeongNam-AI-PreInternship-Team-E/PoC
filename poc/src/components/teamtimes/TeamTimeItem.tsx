@@ -27,6 +27,7 @@ type TimeProps = {
   onChangeColor: (id: number, arrnum: number) => void;
   indexofTime: number;
   teametimes: any;
+  randArr: any;
 };
 
 export const TeamTimeItem = ({
@@ -38,6 +39,7 @@ export const TeamTimeItem = ({
   onChangeColor,
   indexofTime,
   teametimes,
+  randArr,
 }: TimeProps) => {
   return (
     <PageWrapper>
@@ -46,6 +48,7 @@ export const TeamTimeItem = ({
         {time.all_times[0]
           ? time.all_times[0].map((sep: any) => (
               <TeamTimeIndex
+                randArr={randArr}
                 time={time}
                 key={sep.index}
                 onChangeColor={onChangeColor}

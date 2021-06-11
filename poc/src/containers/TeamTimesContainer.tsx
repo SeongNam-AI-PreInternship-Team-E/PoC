@@ -49,11 +49,21 @@ function TeamTimesContainer() {
 
   const timeSet = getSeperateTime(days.start_hour, days.end_hour);
   const avalibaleTime = days.end_hour - days.start_hour;
+  console.log(avalibaleTime * 2);
   const size = times.length;
-
+  const getRandom = useCallback(() => {
+    const randomNum = Math.floor(Math.random() * avalibaleTime + 1);
+    let arr = [];
+    for (let i = 0; i < randomNum; i++) {
+      arr.push(Math.floor(Math.random() * avalibaleTime * 2));
+    }
+    return arr;
+  }, [avalibaleTime]);
+  const randArr = getRandom();
   return (
     <>
       <TeamTimeList
+        randArr={randArr}
         times={times}
         onAddTeamTimes={onAddTeamTimes}
         onAddTeamAllTimes={onAddTeamAllTimes}

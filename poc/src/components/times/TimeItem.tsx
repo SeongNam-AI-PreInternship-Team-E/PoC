@@ -6,25 +6,16 @@ import { Days } from "../../modules/days/days";
 import { SetDays } from "../../modules/times/times";
 import { TimeIndex } from "./TimeIndex";
 const PageWrapper = styled.div`
-  margin-top: 100px;
-  width: 10%;
+  width: 5rem;
   flex-direction: row;
   align-items: center;
-`;
-
-const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid black;
-  text-align: center;
-  cursor: pointer;
 `;
 
 const TimeBlock = styled.li`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  margin-left: 30px;
 `;
 
 type TimeProps = {
@@ -35,6 +26,7 @@ type TimeProps = {
   startTime: number;
   onChangeColor: (id: number, arrnum: number) => void;
   indexofTime: number;
+  randArr: any;
 };
 
 export const TimeItem = ({
