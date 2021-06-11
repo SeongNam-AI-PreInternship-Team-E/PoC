@@ -6,15 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./modules";
-import { HashRouter } from "react-router-dom";
+import { HashRouter, BrowserRouter } from "react-router-dom";
 import { composeWithDevTools } from "redux-devtools-extension"; // 리덕스 개발자 도구
 
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
