@@ -15,8 +15,8 @@ const PageWrapper = styled.div`
 `;
 
 const BoxElement = styled.div`
-  margin-top: 2rem;
-  padding: 2rem;
+  margin-top: 1rem;
+  padding: 1rem;
   display: flexbox;
   border: 1px solid black;
   border-radius: 1rem;

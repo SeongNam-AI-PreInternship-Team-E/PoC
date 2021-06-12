@@ -45,6 +45,9 @@ export const TeamTimeIndex = ({
       setColor("#5465FF");
       setOpacity("40%");
     } else {
+      if (opacity === "40%") {
+        setOpacity("100%");
+      }
       setColor("white");
     }
     onChangeColor(indexofTime, sep.index);

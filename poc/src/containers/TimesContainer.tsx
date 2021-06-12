@@ -25,7 +25,13 @@ function TimesContainer() {
     let arr = [];
     let index = 0;
     for (let i = start; i <= end; i += 0.5) {
-      arr.push({ time: i, color: "white", index, select: false });
+      arr.push({
+        time: i,
+        color: "white",
+        index,
+        select: false,
+        opacity: "100%",
+      });
       index++;
     }
     return arr;

@@ -57,6 +57,10 @@ export const teamtimeSlice = createSlice({
           colors.all_times[0][action.payload.arrnum].color = "#5465FF";
           colors.all_times[0][action.payload.arrnum].select =
             !colors.all_times[0][action.payload.arrnum].select;
+        } else if (
+          colors.all_times[0][action.payload.arrnum].opacity === "40%"
+        ) {
+          colors.all_times[0][action.payload.arrnum].opacity = "100%";
         } else {
           colors.all_times[0][action.payload.arrnum].color = "white";
           colors.all_times[0][action.payload.arrnum].select =
